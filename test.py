@@ -8,7 +8,6 @@ def print_path(path):
         print_puzzle(state)
         print("")
 
-
 def print_puzzle(state):
     for row in range(4):
         for col in range(4):
@@ -20,7 +19,6 @@ def print_puzzle(state):
             else:
                 print(str(state[4*row+col]), end="\t")
         print("")
-
 
 def is_solvable(state):
     invs = 0
@@ -34,7 +32,6 @@ def is_solvable(state):
             if state[i] > state[j]:
                 invs += 1
     return (int(z//4) + invs) % 2 == 1
-
 
 if __name__ == "__main__":
     wd_table = []

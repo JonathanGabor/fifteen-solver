@@ -26,7 +26,7 @@ def neighbors(state, i, h_wd, v_wd, map, previous, start_blank, wd_neighbors):
             new_state = state[:]
             new_state[i-4] = 16
             new_state[i] = state[i-4]
-            n_wd = wd_neighbors[start_blank//4][h_wd][7 -map[new_state[i]-1]//4]
+            n_wd = wd_neighbors[start_blank//4][h_wd][7 - map[new_state[i]-1]//4]
             neighborhood.append((new_state, i-4, n_wd, v_wd, -4))
     #move blank down?
     if i<12:
