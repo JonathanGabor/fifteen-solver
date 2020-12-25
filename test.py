@@ -24,24 +24,14 @@ def is_solvable(state):
     invs = 0
     z = state.index(16)
     for i in range(15):
-        if i == z:
-            continue
-        for j in range(i+1, 16):
-            if j == z:
-                continue
-            if state[i] > state[j]:
-                invs += 1
-    return (int(z//4) + invs) % 2 == 1
+        if i != z:
+            for j in range(i+1, 16):
+                if state[i] > state[j]:
+                    invs += 1
+    return (z//4 + invs) % 2 == 1
 
 if __name__ == "__main__":
-    wd_table = []
-    wd_neighbors = []
-    wd_tuple_lookup = []
-    for i in range(4):
-        next_tuple_lookup, next_neighborhood, next_table = wd.walking_distance_table(i)
-        wd_tuple_lookup.append(next_tuple_lookup)
-        wd_neighbors.append(next_neighborhood)
-        wd_table.append(next_table)
+    wd_table, wd_neighbors, wd_tuple_lookup = wd.generate_wd_tables()
 
     run_times = []
     solved5 = 0
@@ -50,8 +40,8 @@ if __name__ == "__main__":
     max_time = 100
     num_tests = 20
 
-    state = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
     for test in range(num_tests):
+        state = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
         random.shuffle(state)
         while not is_solvable(state):
            random.shuffle(state)

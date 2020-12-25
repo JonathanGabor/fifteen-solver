@@ -1,3 +1,14 @@
+def generate_wd_tables():
+    wd_table = []
+    wd_neighbors = []
+    wd_tuple_lookup = []
+    for i in range(4):
+        next_tuple_lookup, next_neighborhood, next_table = walking_distance_table(i)
+        wd_tuple_lookup.append(next_tuple_lookup)
+        wd_neighbors.append(next_neighborhood)
+        wd_table.append(next_table)
+    return wd_table, wd_neighbors, wd_tuple_lookup
+
 def walking_distance_table(goal):
     state = [[4, 0, 0, 0], [0, 4, 0, 0], [0, 0, 4, 0], [0, 0, 0, 4]]
     state[goal][goal] = 3
